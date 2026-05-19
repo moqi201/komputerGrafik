@@ -21,7 +21,7 @@ def bresenham(x1, y1, x2, y2):
     if dx > dy :
         p = 2 * dy - dx  
         while x != x2:
-            screen.set_at((x, y), red)
+            screen.set_at((x, y), white)
             x += sx
             if p < 0:
                 p += 2 * dy
@@ -31,10 +31,22 @@ def bresenham(x1, y1, x2, y2):
     else:
         p = 2 * dx - dy  
         while y != y2:
-            screen.set_at((x, y), red)
+            screen.set_at((x, y), white)
             y += sy
             if p < 0:
                 p += 2 * dx
             else:
                 x += sx
                 p += 2 * (dx - dy)
+running = True
+while running:
+    screen.fill(red)
+    bresenham(100, 100, 500, 300)
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+
+pygame.quit()
+sys.exit()
